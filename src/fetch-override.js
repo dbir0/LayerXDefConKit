@@ -7,10 +7,10 @@ window.fetch = async (input, options = {}) => {
     if(Object.keys(options).length > 0) {
       console.log("options: ", options);
     }
-    return originalFetch(input, options);
+    return originalFetch.call(this, input, options);
   } catch (e) {
     console.error("error during fetch", e);
-    return originalFetch(input, options);
+    return originalFetch.call(this, input, options);
   }
 };
 
