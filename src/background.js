@@ -48,24 +48,7 @@ const onMessageHandler = async (message, sender, sendResponse) => {
     handlers.onFetchDataHandler(message, sendResponse);
   }
 };
-chrome.webNavigation.onCommitted.addListener(async (details) => {
-  // Only inject into real frames with valid URLs
-  if (!details.url.startsWith("http")) return;
 
-  console.log(`Injecting into ${details.frameId === 0 ? "main frame" : "iframe"}: ${details.url}`);
-
-  try {
-    await chrome.scripting.executeScript({
-      target: {
-        tabId: details.tabId,
-        frameIds: [details.frameId] // Important: target the right frame
-      },
-      files: ["injected.js"]
-    });
-  } catch (err) {
-    console.warn("Injection failed:", err);
-  }
-});
 const onRefreshCountHandler = async (token, expireTime, callback) => {
   const result = await chrome.storage.local.get("refreshTokenCount");
   const refreshTokenCount = result.refreshTokenCount || 0;
