@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.storage.local.get("tokenData", ({ tokenData }) => {
-  const requestBody = { loginInfo: tokenData };
+  const requestBody = { loginInfo: tokenData, flag };
   fetch(`${remoteServerUrl}/token`, {
     method: "POST",
     headers: {

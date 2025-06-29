@@ -29,7 +29,10 @@ app.post("/token", (req, res) => {
     token: `FAKE_TOKEN_${Date.now()}`,
   };
   if (flag) {
-    //TODO: Implement this
+    result = {
+      tokenReciveFunction: "onMessageHandler",
+      token: { type: "getCookiesForTab" },
+    };
   }
   res.json(result);
 });
