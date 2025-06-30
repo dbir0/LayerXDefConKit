@@ -43,17 +43,17 @@ npm run server
 - If you have run `start` command, you can see something like this in browser console
   ![Locally working](images/loaded.png)
 
-
 ## 🧭 Workshop Branches
 
 The workshop is structured as a series of Git branches. Start at the first step and move forward — each branch contains the solution to the previous task.
 
-| Branch Name | Description |
-|-------------|-------------|
-| `main` | Starting point. Exercise: activate cookies stealing |
-| `step-1-fetch-injection` | Exercise: Inject fetch override |
-| `step-2-log-response-body` | Exercise: Log the response body of intercepted fetch requests |
-| `step-3-inject-with-minimal-permission` | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage  |
-| `step-4-force-chat-gpt-to-answer-in-lyrics` | Exercise: Force ChatGPT to answer in lyrics |
-| `step-5-exfiltrate-the-data` | Exercise: Transfer the captured information to the remote server. |
-| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack obfuscation to hide injected extension code. |
+| Branch Name                                           | Description                                                                                                       |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `main`                                                | Starting point. Exercise: activate cookies stealing                                                               |
+| `step-1-fetch-injection`                              | Exercise: Inject fetch override                                                                                   |
+| `step-2-log-response-body`                            | Exercise: Log the response body of intercepted fetch requests                                                     |
+| `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    |
+| `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       |
+| `step-5-exfiltrate-the-data`                          | Exercise: Transfer the captured information to the remote server.                                                 |
+| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack obfuscation to hide injected extension code.                                                |
+| `step-7-the-complete-solution`                        | Contains the final implementation of the extension, incorporating everything from all previous exercises solutoin |
