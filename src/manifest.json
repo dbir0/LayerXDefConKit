@@ -19,7 +19,7 @@
     },
     {
       "matches": ["<all_urls>"],
-      "js": ["fetch-override.bundle.js"],
+      "js": ["fetch-override.js"],
       "all_frames": true,
       "run_at": "document_start",
       "world": "MAIN"

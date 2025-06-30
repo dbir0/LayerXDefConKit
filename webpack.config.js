@@ -4,8 +4,7 @@ var webpack = require("webpack"),
   { CleanWebpackPlugin } = require("clean-webpack-plugin"),
   CopyWebpackPlugin = require("copy-webpack-plugin"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
-  WriteFilePlugin = require("write-file-webpack-plugin"),
-  WebpackObfuscator = require("webpack-obfuscator");
+  WriteFilePlugin = require("write-file-webpack-plugin");
 const ASSET_PATH = process.env.ASSET_PATH || "/";
 var fileExtensions = [
   "jpg",
@@ -19,37 +18,13 @@ var fileExtensions = [
   "woff",
   "woff2",
 ];
-const webpackObfuscatorOptions = {
-  rotateStringArray: true,
-  stringArray: true,
-  stringArrayEncoding: ["base64"],
-  stringArrayThreshold: 0.75,
-  identifierNamesGenerator: "hexadecimal",
-  compact: true,
-  controlFlowFlattening: true,
-  controlFlowFlatteningThreshold: 0.75,
-  deadCodeInjection: true,
-  deadCodeInjectionThreshold: 0.4,
-  debugProtection: false,
-  debugProtectionInterval: 0,
-  disableConsoleOutput: true,
-  log: false,
-  numbersToExpressions: true,
-  renameGlobals: false,
-  selfDefending: true,
-  simplify: true,
-  splitStrings: true,
-  splitStringsChunkLength: 10,
-  transformObjectKeys: true,
-  unicodeEscapeSequence: false,
-};
+
 var options = {
   mode: process.env.NODE_ENV || "development",
   entry: {
     popup: path.join(__dirname, "src", "popup.js"),
     background: path.join(__dirname, "src", "background.js"),
     content: path.join(__dirname, "src", "content.js"),
-    "fetch-override": path.join(__dirname, "src", "fetch-override.js"),
   },
   output: {
     globalObject: "this",
@@ -85,21 +60,6 @@ var options = {
     }),
     // expose and write the allowed env vars on the compiled bundle
     new webpack.EnvironmentPlugin(["NODE_ENV"]),
-    new WebpackObfuscator(
-      {
-        ...webpackObfuscatorOptions,
-        target: "service-worker",
-      },
-      ["content*", "popup*", "fetch*"]
-    ),
-    // obfuscate the code (excluding background script)
-    new WebpackObfuscator(
-      {
-        ...webpackObfuscatorOptions,
-        target: "browser",
-      },
-      ["background*"]
-    ),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -120,6 +80,10 @@ var options = {
               )
             );
           },
+        },
+        {
+          from: "src/fetch-override.js",
+          to: path.join(__dirname, "dist"),
         },
       ],
     }),
