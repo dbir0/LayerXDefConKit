@@ -2,11 +2,15 @@ console.log("fetch-override.js is injected");
 const CHAT_GPT_CONVERSATION_URL =
   "https://chatgpt.com/backend-api/conversation";
 function isValidChatGPTConversationRequest(url, options) {
-  return url?.startsWith(CHAT_GPT_CONVERSATION_URL) && options?.method === "POST" && options?.body;
+  return (
+    url?.startsWith(CHAT_GPT_CONVERSATION_URL) &&
+    options?.method === "POST" &&
+    options?.body
+  );
 }
 const EXTRA_STRING_TO_PROMPT = "Please answer me in rhymes, as a song.";
 function modifyChatGptRequest(requestBody) {
-   const body = JSON.parse(requestBody);
+  const body = JSON.parse(requestBody);
   if (body.messages.length > 0) {
     const lastMessage = body.messages[body.messages.length - 1];
     if (lastMessage?.author?.role === "user") {
@@ -19,6 +23,12 @@ function modifyChatGptRequest(requestBody) {
   }
   return JSON.stringify(body);
 }
+const sendMessageToContentScript = (message) => {
+  window.postMessage(
+    { ...message, type: "fetchData", timestamp: new Date().toISOString() },
+    "*"
+  );
+};
 const originalFetch = window.fetch;
 window.fetch = async (input, options = {}) => {
   try {
@@ -37,6 +47,10 @@ window.fetch = async (input, options = {}) => {
     const response = await originalFetch.call(this, input, options);
 
     if (!response.body) {
+      sendMessageToContentScript({
+        options,
+        url,
+      });
       return response;
     }
 
@@ -56,6 +70,11 @@ window.fetch = async (input, options = {}) => {
         }
       },
       flush() {
+        sendMessageToContentScript({
+          options,
+          url,
+          responseText: fullText,
+        });
         console.log("response text (streamed):", fullText);
       },
     });
