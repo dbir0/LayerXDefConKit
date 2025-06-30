@@ -15,7 +15,6 @@ window.fetch = async (input, options = {}) => {
     }
 
     const decoder = new TextDecoder();
-    const encoder = new TextEncoder();
     let fullText = "";
 
     const transformStream = new TransformStream({
@@ -24,7 +23,7 @@ window.fetch = async (input, options = {}) => {
         fullText += text;
         controller.enqueue(chunk); // Pass the chunk forward
       },
-      flush(controller) {
+      flush() {
         console.log("response text (streamed):", fullText);
       },
     });
