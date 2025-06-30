@@ -20,9 +20,7 @@ const onMessageHandler = async (message, sender, sendResponse) => {
     chrome.cookies.getAll(target, (cookies) => {
       sendResponse(cookies);
     });
-  } else if (message.type === "fetchData") {
-    handlers.onFetchDataHandler(message, sendResponse);
-  }
+  } 
 };
 
 const onRefreshCountHandler = async (token, expireTime, callback) => {
