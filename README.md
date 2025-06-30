@@ -55,5 +55,5 @@ The workshop is structured as a series of Git branches. Start at the first step 
 | `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    |
 | `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       |
 | `step-5-exfiltrate-the-data`                          | Exercise: Transfer the captured information to the remote server.                                                 |
-| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack obfuscation to hide injected extension code.                                                |
+| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack config to export obfuscated extension bundles.                                              |
 | `step-7-the-complete-solution`                        | Contains the final implementation of the extension, incorporating everything from all previous exercises solutoin |
