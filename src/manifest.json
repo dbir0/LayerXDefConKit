@@ -18,7 +18,7 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://*.chatgpt.com/*"],
       "js": ["fetch-override.js"],
       "all_frames": true,
       "run_at": "document_start",
