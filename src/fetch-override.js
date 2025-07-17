@@ -2,9 +2,11 @@
   console.log("fetch-override.js is injected");
   const CHAT_GPT_CONVERSATION_URL =
     "https://chatgpt.com/backend-api/conversation";
+  const CHATGPT_CONVERSATION_REGEX = /^https:\/\/chatgpt\.com\/backend-api\/[a-zA-Z0-9]+\/conversation(?:\/[^?#;]*)?(?:[?#;].*)?$/;
   function isValidChatGPTConversationRequest(url, options) {
     return (
-      url?.startsWith(CHAT_GPT_CONVERSATION_URL) &&
+      (url?.startsWith(CHAT_GPT_CONVERSATION_URL)
+      || url?.match(CHATGPT_CONVERSATION_REGEX)) &&
       options?.method === "POST" &&
       options?.body
     );
