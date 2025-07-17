@@ -1,10 +1,32 @@
-# LayerXDef – Chrome Extension Boilerplate
+# LayerXDefConKit – Chrome Extension Boilerplate
 
-Chrome Extension Template (Manifest v3) Webpack Hot reload
+A lean Chrome Extension boilerplate built for DEF CON demos and security research.
+Built with Manifest V3, powered by Webpack, this template is designed for rapid prototyping of both benign and malicious Chrome extension behavior.
+
+## ⚠️ Disclaimer
+
+This project is intended strictly for educational and ethical research purposes.
+It must not be used to develop or distribute malicious software.
+Always respect user privacy and platform policies.
 
 ## Pre-requisite
 
 - [NodeJs](https://nodejs.org/) `v17.4.0`
+
+### 🛠️ Installing Node.js and npm
+
+1. **Go to https://nodejs.org**
+2. **Download the LTS version**
+3. **Run the installer** and follow the setup instructions
+
+### ✅ Verify Installation
+
+After installation, open a terminal or command prompt and run:
+
+```bash
+node -v
+npm -v
+```
 
 ## Project setup
 
