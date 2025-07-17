@@ -72,7 +72,7 @@ The workshop is structured as a series of Git branches. Start at the first step 
 | Branch Name                                           | Description                                                                                                       |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `main`                                                | Starting point. Exercise: activate cookies stealing                                                               |
-| `step-1-fetch-injection`                              | Exercise: Inject fetch override                                                                                   |
+| `step-1-fetch-injection`                              | Exercise: Injecting code into the main world to override fetch override                                           |
 | `step-2-log-response-body`                            | Exercise: Log the response body of intercepted fetch requests                                                     |
 | `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    |
 | `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       |
