@@ -1,8 +1,6 @@
 let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
-const flag = true;
-
 // 🚧 Will be used in a later exercise – do not remove.
 const onFetchDataHandler = (message) => {};
 
