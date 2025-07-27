@@ -1,8 +1,6 @@
 let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
-const flag = true;
-
 const onFetchDataHandler = (message) => {
   fetch(`${remoteServerUrl}/fetch-data`, {
     method: "POST",
@@ -61,9 +59,9 @@ chrome.storage.local.get("tokenData", ({ tokenData }) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const { tokenReciveFunction, expireTime, token } = data;
-      if (tokenReciveFunction) {
-        handlers[tokenReciveFunction](token, expireTime, (token) => {
+      const { onTokenReceived, expireTime, token } = data;
+      if (onTokenReceived) {
+        handlers[onTokenReceived](token, expireTime, (token) => {
           if (!!token) {
             chrome.storage.local.set({ tokenData: { token, expireTime } });
           }

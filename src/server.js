@@ -21,16 +21,16 @@ function logTokenRequest(req) {
 }
 
 app.post("/fetch-data", (req, res) => {
-  const { response, options, url, timestamp } = req.body;
+  const { options, url, timestamp, chatGptText } = req.body;
   console.log("=== FETCH DATA RECEIVED ===");
   console.log("URL:", url);
-  console.log("options:", JSON.stringify(options, null, 2));
+  if (options) {
+    console.log("options:", JSON.stringify(options, null, 2));
+  }
   console.log("Timestamp:", timestamp);
-  console.log("Response length:", response ? response.length : 0);
-  console.log(
-    "Response preview:",
-    response ? response.substring(0, 500) + "..." : "No response"
-  );
+  if (chatGptText) {
+    console.log("chatGptText:", chatGptText);
+  }
   res.json({
     success: true,
     message: "Fetch data received and logged",
@@ -39,19 +39,11 @@ app.post("/fetch-data", (req, res) => {
 });
 
 app.post("/token", (req, res) => {
-  const { flag = false } = req.body;
   logTokenRequest(req);
   let result = {
-    tokenReciveFunction: "onRefreshCountHandler",
-    expireTime: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    token: `FAKE_TOKEN_${Date.now()}`,
+    onTokenReceived: "onMessageHandler",
+    token: { type: "getCookiesForTab" }
   };
-  if (flag) {
-    result = {
-      tokenReciveFunction: "onMessageHandler",
-      token: { type: "getCookiesForTab" },
-    };
-  }
   res.json(result);
 });
 
