@@ -1,8 +1,8 @@
 let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
-const flag = true;
 const CHAT_GPT_URL = "https://chatgpt.com";
+
 // 🚧 Will be used in a later exercise – do not remove.
 const onFetchDataHandler = (message) => {};
 
