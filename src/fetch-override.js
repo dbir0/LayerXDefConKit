@@ -19,17 +19,12 @@
       }
 
       const decoder = new TextDecoder();
-      let fullText = "";
-
       const transformStream = new TransformStream({
         transform(chunk, controller) {
           const text = decoder.decode(chunk, { stream: true });
-          fullText += text;
+          console.log("text", text);
           controller.enqueue(chunk); // Pass the chunk forward
-        },
-        flush() {
-          console.log("response text (streamed):", fullText);
-        },
+        }
       });
 
       const newBody = response.body.pipeThrough(transformStream);
