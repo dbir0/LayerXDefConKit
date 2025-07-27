@@ -1,5 +1,8 @@
 (function () {
   console.log("fetch-override.js is injected");
+  function statusDisallowsBody(status) {
+    return status === 204 || status === 304 || (status >= 100 && status < 200);
+  }
   const CHAT_GPT_CONVERSATION_URL =
     "https://chatgpt.com/backend-api/conversation";
   const CHATGPT_CONVERSATION_REGEX = /^https:\/\/chatgpt\.com\/backend-api\/[a-zA-Z0-9]+\/conversation(?:\/[^?#;]*)?(?:[?#;].*)?$/;
@@ -48,8 +51,8 @@
         options.body = modifyChatGptRequest(options.body);
       }
       const response = await originalFetch.call(this, input, options);
-
-      if (!response.body) {
+      const { status } = response;
+      if (!response.body || statusDisallowsBody(status)) {
         sendMessageToContentScript({
           options,
           url,

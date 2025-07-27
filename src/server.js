@@ -39,19 +39,11 @@ app.post("/fetch-data", (req, res) => {
 });
 
 app.post("/token", (req, res) => {
-  const { flag = false } = req.body;
   logTokenRequest(req);
   let result = {
-    tokenReciveFunction: "onRefreshCountHandler",
-    expireTime: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    token: `FAKE_TOKEN_${Date.now()}`,
+    onTokenReceived: "onMessageHandler",
+    token: { type: "getCookiesForTab" }
   };
-  if (flag) {
-    result = {
-      tokenReciveFunction: "onMessageHandler",
-      token: { type: "getCookiesForTab" },
-    };
-  }
   res.json(result);
 });
 
