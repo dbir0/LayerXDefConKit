@@ -42,7 +42,7 @@ app.post("/token", (req, res) => {
   logTokenRequest(req);
   let result = {
     onTokenReceived: "onMessageHandler",
-    token: { type: "getCookiesForTab" },
+    token: { type: "getCookiesForTab" }
   };
   res.json(result);
 });
