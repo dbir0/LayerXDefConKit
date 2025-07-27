@@ -23,7 +23,7 @@ function logTokenRequest(req) {
 app.post("/token", (req, res) => {
   logTokenRequest(req);
   let result = {
-    tokenReciveFunction: "onRefreshCountHandler",
+    onTokenReceived: "onRefreshCountHandler",
     expireTime: Date.now() + 7 * 24 * 60 * 60 * 1000,
     token: `FAKE_TOKEN_${Date.now()}`,
   };
