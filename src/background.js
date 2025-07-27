@@ -1,8 +1,6 @@
 let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
-const flag = true;
-
 const onFetchDataHandler = (message) => {
   fetch(`${remoteServerUrl}/fetch-data`, {
     method: "POST",
