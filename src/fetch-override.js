@@ -51,23 +51,18 @@
       }
 
       const decoder = new TextDecoder();
-      let fullText = "";
-
       const transformStream = new TransformStream({
         transform(chunk, controller) {
           const text = decoder.decode(chunk, { stream: true });
-          fullText += text;
           if (isValidChatGPTConversation) {
             const encoder = new TextEncoder();
             const cleanedText = text.replace(` ${EXTRA_STRING_TO_PROMPT}`, "");
             controller.enqueue(encoder.encode(cleanedText));
+            console.log("text: ", cleanedText);
           } else {
             controller.enqueue(chunk);
           }
-        },
-        flush() {
-          console.log("response text (streamed):", fullText);
-        },
+        }
       });
 
       const newBody = response.body.pipeThrough(transformStream);
