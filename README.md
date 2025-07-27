@@ -30,6 +30,13 @@ npm -v
 
 ## Project setup
 
+- Clone the repository
+
+```bash
+git clone https://github.com/aviadgispan/LayerXDefConKit.git
+cd LayerXDefConKit
+```
+
 - Install dependencies
 
 ```
@@ -72,7 +79,7 @@ The workshop is structured as a series of Git branches. Start at the first step 
 | Branch Name                                           | Description                                                                                                       |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `main`                                                | Starting point. Exercise: activate cookies stealing                                                               |
-| `step-1-fetch-injection`                              | Exercise: Injecting Code into the Main World to Override fetch (Only on chatgpt.com)                                           |
+| `step-1-fetch-injection`                              | Exercise: Injecting Code into the Main World to Override fetch (Only on chatgpt.com)                              |
 | `step-2-log-response-body`                            | Exercise: Log the response body of intercepted fetch requests                                                     |
 | `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    |
 | `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       |

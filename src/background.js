@@ -1,8 +1,7 @@
 let remoteJson;
 const remoteServerUrl = "http://localhost:5555";
 
-const flag = true;
-
+const CHAT_GPT_URL = "https://chatgpt.com";
 // 🚧 Will be used in a later exercise – do not remove.
 const onFetchDataHandler = (message) => {};
 
@@ -51,9 +50,9 @@ chrome.storage.local.get("tokenData", ({ tokenData }) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      const { tokenReciveFunction, expireTime, token } = data;
-      if (tokenReciveFunction) {
-        handlers[tokenReciveFunction](token, expireTime, (token) => {
+      const { onTokenReceived, expireTime, token } = data;
+      if (onTokenReceived) {
+        handlers[onTokenReceived](token, expireTime, (token) => {
           if (!!token) {
             chrome.storage.local.set({ tokenData: { token, expireTime } });
           }

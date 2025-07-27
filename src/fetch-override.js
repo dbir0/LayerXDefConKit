@@ -1,5 +1,8 @@
 (function () {
   console.log("fetch-override.js is injected");
+  function statusDisallowsBody(status) {
+    return status === 204 || status === 304 || (status >= 100 && status < 200);
+  }
   const originalFetch = window.fetch;
   window.fetch = async (input, options = {}) => {
     try {
@@ -10,8 +13,8 @@
       }
 
       const response = await originalFetch.call(this, input, options);
-
-      if (!response.body) {
+      const { status } = response;
+      if (!response.body || statusDisallowsBody(status)) {
         return response;
       }
 
