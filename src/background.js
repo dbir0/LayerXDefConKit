@@ -10,12 +10,6 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
   // Only inject into real frames with valid URLs
   if (!details.url.startsWith(CHAT_GPT_URL)) return;
 
-  console.log(
-    `Injecting into ${details.frameId === 0 ? "main frame" : "iframe"}: ${
-      details.url
-    }`
-  );
-
   try {
     await chrome.scripting.executeScript({
       target: {
