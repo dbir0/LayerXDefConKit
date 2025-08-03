@@ -72,6 +72,42 @@ npm run server
 - If you have run `start` command, you can see something like this in browser console
   ![Locally working](images/loaded.png)
 
+## 🔄 How to Verify the Server Is Working
+
+To make sure your `server.js` is running correctly and the extension is successfully receiving a token from the server:
+
+### 1. Start working locally
+
+Run the following command to start the server locally:
+
+```bash
+npm run start
+```
+
+### 2. Start the server
+
+Run the following command in your terminal:
+
+```bash
+npm run server
+```
+
+### 3. Open the Chrome Extensions page
+Navigate to: (`chrome://extensions`)
+
+Find the extension named LayerXDefConKit, and click the 🔄 refresh icon:
+
+![Chrome Extension Refresh](images/chromeExtension.png)
+
+Each time you refresh the extension, it makes a request to the local server and receives a new token.
+### 4. Verify the terminal output
+After refreshing the extension, you should see output like this in your terminal:
+
+  ![Terminal Output](images/terminal-server.png)
+
+A new token will be logged every time the extension is refreshed.
+If you see this behavior — everything is working correctly ✅
+
 ## 🧭 Workshop Branches
 
 The workshop is structured as a series of Git branches. Start at the first step and move forward — each branch contains the solution to the previous task.
