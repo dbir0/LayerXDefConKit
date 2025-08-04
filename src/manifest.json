@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "DEF CON workshop template for demonstrating malicious Chrome extension techniques — for educational and ethical hacking purposes only.",
   "manifest_version": 3,
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Open"
-  },
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -28,6 +24,6 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
-  "permissions": ["cookies", "tabs", "storage"],
+  "permissions": [],
   "host_permissions": ["<all_urls>"]
 }
