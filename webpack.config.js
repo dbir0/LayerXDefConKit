@@ -85,6 +85,10 @@ var options = {
           from: "src/fetch-override.js",
           to: path.join(__dirname, "dist"),
         },
+        {
+          from: path.resolve(__dirname, "images/icons"), // source folder
+          to: path.resolve(__dirname, "dist/icons"), // destination folder
+        },
       ],
     }),
     new HtmlWebpackPlugin({
