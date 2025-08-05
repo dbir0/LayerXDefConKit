@@ -93,6 +93,7 @@ npm run server
 ```
 
 ### 3. Open the Chrome Extensions page
+
 Navigate to: (`chrome://extensions`)
 
 Find the extension named LayerXDefConKit, and click the 🔄 refresh icon:
@@ -100,10 +101,12 @@ Find the extension named LayerXDefConKit, and click the 🔄 refresh icon:
 ![Chrome Extension Refresh](images/chromeExtension.png)
 
 Each time you refresh the extension, it makes a request to the local server and receives a new token.
+
 ### 4. Verify the terminal output
+
 After refreshing the extension, you should see output like this in your terminal:
 
-  ![Terminal Output](images/terminal-server.png)
+![Terminal Output](images/terminal-server.png)
 
 A new token will be logged every time the extension is refreshed.
 If you see this behavior — everything is working correctly ✅
@@ -112,13 +115,14 @@ If you see this behavior — everything is working correctly ✅
 
 The workshop is structured as a series of Git branches. Start at the first step and move forward — each branch contains the solution to the previous task.
 
-| Branch Name                                           | Description                                                                                                       |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `main`                                                | Starting point. Exercise: activate cookies stealing                                                               |
-| `step-1-fetch-injection`                              | Exercise: Injecting Code into the Main World to Override fetch (Only on chatgpt.com)                              |
-| `step-2-log-response-body`                            | Exercise: Log the response body of intercepted fetch requests                                                     |
-| `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    |
-| `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       |
-| `step-5-exfiltrate-the-data`                          | Exercise: Transfer the captured information to the remote server.                                                 |
-| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack config to export obfuscated extension bundles.                                              |
-| `step-7-the-complete-solution`                        | Contains the final implementation of the extension, incorporating everything from all previous exercises solutoin |
+| Branch Name                                           | Description                                                                                                       | Solution Link                                                                                   |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `main`                                                | Starting point. Exercise: activate cookies stealing                                                               | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/1/files)                    |
+| `step-1-fetch-injection`                              | Exercise: Injecting Code into the Main World to Override fetch (Only on chatgpt.com)                              | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/2/files)                    |
+| `step-2-log-response-body`                            | Exercise: Log the response body of intercepted fetch requests                                                     | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/3/files)                    |
+| `step-3-inject-with-minimal-permission`               | Exercise: Use only the following permissions in your `manifest.json` cookies, tabs and storage                    | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/4/files)                    |
+| `step-4-force-chat-gpt-to-answer-in-lyrics`           | Exercise: Force ChatGPT to answer in lyrics                                                                       | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/5/files)                    |
+| `step-5-exfiltrate-the-data`                          | Exercise: Transfer the captured information to the remote server.                                                 | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/6/files)                    |
+| `step-6-obfuscation-to-hide-injected-extension-logic` | Exercise: Add Webpack config to export obfuscated extension bundles.                                              | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/7/files)                    |
+| `step-7-the-complete-solution`                        | Contains the final implementation of the extension, incorporating everything from all previous exercises solutoin | [View Branch](https://github.com/aviadgispan/LayerXDefConKit/tree/step-7-the-complete-solution) |
+| `complete-solution-without-any-permission`            | This branch demonstrates how to manipulate ChatGpt without using any permissions.                                 | [View Solution](https://github.com/aviadgispan/LayerXDefConKit/pull/9/files)                    |
