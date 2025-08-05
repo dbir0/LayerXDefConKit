@@ -121,6 +121,10 @@ var options = {
             );
           },
         },
+        {
+          from: path.resolve(__dirname, "images/icons"), // source folder
+          to: path.resolve(__dirname, "dist/icons"), // destination folder
+        },
       ],
     }),
     new HtmlWebpackPlugin({
